@@ -14,6 +14,11 @@ git () {
 
     # do the git command
     command git "$@"
+    
+    if [[ $? != 0 ]] ;
+    then
+        return
+    fi    
 
     # git status or git log
     if [[ $@ == status* || $@ == log* ]] ;
