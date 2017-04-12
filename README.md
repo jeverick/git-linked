@@ -17,6 +17,7 @@ git () {
     
     if [[ $? != 0 ]] ;
     then
+        (Afplay ~/zelda-clips/zelda-link-hurt.mp3 &)
         return
     fi    
 
