@@ -34,26 +34,29 @@ git () {
         audio_file=~/.git-linked/zelda-spirit-orb.mp3
     fi
 
-    # play sound based on OS
-    if [[ "$OSTYPE" == "darwin"* ]] ;
-    then 
-        (Afplay ${audio_file} &)
-    else 
-        (ffplay -autoexit -nodisp -nostats -loglevel 0 ${audio_file} &)
+    # if we have an audio file, play it
+    if [[ -n "${audio_file}" ]] ;
+    then
+        # play sound based on OS
+        if [[ "$OSTYPE" == "darwin"* ]] ;
+        then 
+            (Afplay "${audio_file}" &)
+        else 
+            (ffplay -autoexit -nodisp -nostats -loglevel 0 ${audio_file} &)
+        fi
     fi
 
     # do the git command
     command git "$@"
-    local command_status=$?
 
     # command failed
-    if [ $command_status -ne 0 ] ;
+    if [ $? -ne 0 ] ;
     then
         audio_file=~/.git-linked/zelda-link-hurt.mp3
          # play sound based on OS
         if [[ "$OSTYPE" == "darwin"* ]] ;
         then
-            (Afplay ${audio_file} &)
+            (Afplay "${audio_file}" &)
         else
             (ffplay -autoexit -nodisp -nostats -loglevel 0 ${audio_file} &)
         fi
