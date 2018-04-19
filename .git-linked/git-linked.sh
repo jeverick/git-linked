@@ -37,7 +37,7 @@ git () {
     # play sound based on OS
     if [[ "$OSTYPE" == "darwin"* ]] ;
     then 
-        (Afplay ${audioi_file} &)
+        (Afplay ${audio_file} &)
     else 
         (ffplay -autoexit -nodisp -nostats -loglevel 0 ${audio_file} &)
     fi
@@ -53,7 +53,7 @@ git () {
          # play sound based on OS
         if [[ "$OSTYPE" == "darwin"* ]] ;
         then
-            (Afplay ${audioi_file} &)
+            (Afplay ${audio_file} &)
         else
             (ffplay -autoexit -nodisp -nostats -loglevel 0 ${audio_file} &)
         fi
